@@ -17,11 +17,9 @@ class App extends Component {
 
     this.toggleFilter = this.toggleFilter.bind(this)
     this.handleSort = this.handleSort.bind(this)
+    this.filtered = this.filtered.bind(this)
+    // this.sortHogs=this.sortHogs.bind(this)
   }
-  
-  // state = {
-     
-  //   }
   
   
     
@@ -44,17 +42,22 @@ class App extends Component {
   }
 
   handleSort(event){
+    console.log(event)
     this.setState({
       sortCriteria: event.target.value
     })
   }
 
-  sortHogs(){
+  sortHogs(filteredHogs){
       if (this.state.sortCriteria === 'name'){
-      return [...hogs].sort((a,b) => a.name.localeCompare(b.name))
-    } else {
-      return hogs
+      return filteredHogs.sort((a,b) => a.name.localeCompare(b.name))
+    } else if(this.state.sortCriteria === 'weight'){
+      return filteredHogs.sort((a,b) => a.weight - b.weight )
+    }else {
+      return filteredHogs
     }
+
+    
   }
 
   render() {
