@@ -16,6 +16,7 @@ class App extends Component {
     }
 
     this.toggleFilter = this.toggleFilter.bind(this)
+    this.handleSort = this.handleSort.bind(this)
   }
   
   // state = {
@@ -62,7 +63,7 @@ class App extends Component {
       <div className="App">
           < Nav />
           <FilterComponent handleSort={this.handleSort} toggleFilter={this.toggleFilter}/>
-          < HogList hogs={this.filtered(hogs)}/>
+          < HogList hogs={this.sortHogs(this.filtered(hogs))}/>
         </div>
     )
   }
